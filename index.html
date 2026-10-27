@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A client-side educational tool that checks URLs for common phishing warning signs.">
+  <title>PhishGuard | URL Risk Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true">⌁</div>
+    <div>
+      <p class="eyebrow">CYBERGHANA LAB · PORTFOLIO PROJECT</p>
+      <h1>PhishGuard <span>URL Analyzer</span></h1>
+    </div>
+    <span class="local-badge">CLIENT-SIDE</span>
+  </header>
+
+  <main class="layout">
+    <section class="intro panel">
+      <div class="intro-copy">
+        <p class="eyebrow">THREAT AWARENESS TOOL</p>
+        <h2>Inspect a link before you trust it.</h2>
+        <p>Check a URL for common phishing warning signs and learn why each signal matters. Analysis runs locally in your browser; the URL is not sent to a server.</p>
+      </div>
+      <div class="shield" aria-hidden="true">⌑</div>
+    </section>
+
+    <section class="panel analyzer">
+      <label for="urlInput">URL to analyze</label>
+      <div class="input-row">
+        <input id="urlInput" type="text" inputmode="url" autocomplete="off" spellcheck="false"
+          placeholder="https://example.com/login" aria-describedby="inputHelp">
+        <button id="analyzeBtn" type="button">Analyze URL</button>
+      </div>
+      <p id="inputHelp" class="help">Tip: paste the full link, including https:// when available. Never enter passwords or private tokens.</p>
+      <p id="errorMsg" class="error" role="alert" hidden></p>
+      <div class="examples">
+        <span>Try a sample:</span>
+        <button class="example" data-url="https://www.wikipedia.org/">Normal example</button>
+        <button class="example" data-url="http://secure-account-login.example.test/verify">Suspicious-looking example</button>
+      </div>
+    </section>
+
+    <section id="results" class="results" aria-live="polite" hidden>
+      <div class="panel score-panel">
+        <div class="score-heading">
+          <div>
+            <p class="eyebrow">HEURISTIC ASSESSMENT</p>
+            <h2 id="riskLabel">Analysis result</h2>
+          </div>
+          <div id="scoreRing" class="score-ring"><span id="scoreValue">0</span><small>/100</small></div>
+        </div>
+        <div class="meter"><div id="meterFill" class="meter-fill"></div></div>
+        <p id="summary" class="summary"></p>
+        <p class="disclaimer">This is a learning aid, not a reputation service. A low score does not prove a URL is safe, and a high score does not prove it is malicious.</p>
+      </div>
+
+      <div class="panel">
+        <p class="eyebrow">URL DETAILS</p>
+        <h2>What was inspected</h2>
+        <dl class="details">
+          <div><dt>Hostname</dt><dd id="hostValue">—</dd></div>
+          <div><dt>Protocol</dt><dd id="protocolValue">—</dd></div>
+          <div><dt>Subdomains</dt><dd id="subdomainValue">—</dd></div>
+          <div><dt>Path depth</dt><dd id="pathValue">—</dd></div>
+        </dl>
+      </div>
+
+      <div class="panel">
+        <div class="checks-header">
+          <div><p class="eyebrow">SIGNAL BREAKDOWN</p><h2>Indicators</h2></div>
+          <span id="indicatorCount" class="count">0 signals</span>
+        </div>
+        <div id="indicatorList" class="indicator-list"></div>
+      </div>
+    </section>
+
+    <section class="panel learning">
+      <p class="eyebrow">SECURITY NOTE</p>
+      <h2>How to use this responsibly</h2>
+      <ul>
+        <li>Don't sign in through links in unexpected messages. Visit the official site by typing its address yourself.</li>
+        <li>Check the exact domain spelling, not just the page design or logo.</li>
+        <li>HTTPS encrypts a connection but does not guarantee a site is legitimate.</li>
+        <li>For real incidents, report suspicious links to your organization's security team or the relevant provider.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>PhishGuard URL Analyzer</span>
+    <span>Educational project · No external API · No URL uploads</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
